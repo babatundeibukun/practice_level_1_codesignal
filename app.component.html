@@ -1,0 +1,52 @@
+<div class="board">
+  <h2 class="board__title">Tasks</h2>
+  <div class="board__columns">
+
+    <!-- TO_DO Column -->
+    <div class="column">
+      <h2 class="column__title">TO_DO</h2>
+      <div class="column__cards">
+        <div class="card" *ngFor="let task of todoItems">
+          <h3 class="card__title">{{ task.title }}</h3>
+          <p class="card__description">{{ task.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN_PROGRESS Column -->
+    <div class="column">
+      <h2 class="column__title">IN_PROGRESS</h2>
+      <div class="column__cards">
+        <div class="card" *ngFor="let task of inProgressItems">
+          <h3 class="card__title">{{ task.title }}</h3>
+          <p class="card__description">{{ task.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DONE Column -->
+    <div class="column">
+      <h2 class="column__title">DONE</h2>
+      <div class="column__cards">
+        <div class="card" *ngFor="let task of doneItems">
+          <h3 class="card__title">{{ task.title }}</h3>
+          <p class="card__description">{{ task.description }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<form (submit)="createTask($event)">
+  <div class="input-container">
+    <input name="taskTitle" placeholder="Task title*" [(ngModel)]="newTask.title" required />
+  </div>
+  <div class="input-container">
+    <textarea name="taskDescription" placeholder="Task description*" [(ngModel)]="newTask.description" required></textarea>
+  </div>
+  <div>
+    <input type="submit" value="Create task" />
+  </div>
+</form>
